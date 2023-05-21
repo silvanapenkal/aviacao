@@ -1,9 +1,6 @@
 package tech.devinhouse.aviacao.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +9,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
+@Table(name = "PASSAGEIROS")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Passageiro {
@@ -27,5 +25,7 @@ public class Passageiro {
     private ClassificacaoPassageiro classificacao;
 
     private Integer milhas;
+
+//    private CheckIn checkIn;
 
 }
