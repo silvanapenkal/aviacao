@@ -26,6 +26,6 @@ public class Passageiro {
 
     private Integer milhas;
 
-//    private CheckIn checkIn;
+
 
 }
