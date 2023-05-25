@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import tech.devinhouse.aviacao.repository.CheckInRepository;
 import tech.devinhouse.aviacao.repository.PassageiroRepository;
 
 @SpringBootApplication
@@ -23,6 +24,7 @@ public class AviacaoApplication {
     @Autowired
     private PassageiroRepository passageiroRepository;
 
-
+    @Autowired
+    private CheckInRepository checkInRepository;
 
 }
