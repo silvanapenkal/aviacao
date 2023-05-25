@@ -6,4 +6,8 @@ import tech.devinhouse.aviacao.model.CheckIn;
 
 @Repository
 public interface CheckInRepository extends JpaRepository<CheckIn, String> {
+
+    boolean existsByPassageiro_Cpf (Long cpf);
+
+    boolean existsByAssento (String assento);
 }

@@ -6,4 +6,8 @@ public class RegistroNaoEncontradoException extends RuntimeException {
         super(nomeRecurso + " com identificador " + id + " não encontrado!");
     }
 
+    public RegistroNaoEncontradoException(String nomeRecurso, String id) {
+        super(nomeRecurso + " com identificador " + id + " não encontrado!");
+    }
+
 }
