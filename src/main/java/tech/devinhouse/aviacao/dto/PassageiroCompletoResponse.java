@@ -1,7 +1,6 @@
 package tech.devinhouse.aviacao.dto;
 
 import lombok.Data;
-import tech.devinhouse.aviacao.model.CheckIn;
 import tech.devinhouse.aviacao.model.ClassificacaoPassageiro;
 
 import java.time.LocalDate;

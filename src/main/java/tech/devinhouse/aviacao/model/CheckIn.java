@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "CHECKINS")
 @AllArgsConstructor
+@NoArgsConstructor
 public class CheckIn {
 
     @Id
