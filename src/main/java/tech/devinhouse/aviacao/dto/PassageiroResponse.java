@@ -1,5 +1,6 @@
 package tech.devinhouse.aviacao.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import tech.devinhouse.aviacao.model.ClassificacaoPassageiro;
 
@@ -12,6 +13,7 @@ public class PassageiroResponse {
 
     private String nome;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 
     private ClassificacaoPassageiro classificacao;

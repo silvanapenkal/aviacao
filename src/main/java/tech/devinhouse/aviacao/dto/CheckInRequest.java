@@ -1,7 +1,6 @@
 package tech.devinhouse.aviacao.dto;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 
 @Data
