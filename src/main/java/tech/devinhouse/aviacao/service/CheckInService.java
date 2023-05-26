@@ -8,11 +8,13 @@ import tech.devinhouse.aviacao.exception.PassageiroMenorDeIdadeException;
 import tech.devinhouse.aviacao.exception.RegistroEncontradoException;
 import tech.devinhouse.aviacao.exception.RegistroNaoEncontradoException;
 import tech.devinhouse.aviacao.model.CheckIn;
+import tech.devinhouse.aviacao.model.Passageiro;
 import tech.devinhouse.aviacao.repository.CheckInRepository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -27,6 +29,14 @@ public class CheckInService {
     public List<CheckIn> consultar() {
         List<CheckIn> checkIns = checkInRepository.findAll();
         return  checkIns;
+    }
+
+    public CheckIn consultarPorCpf(Long cpf) {
+        Optional<CheckIn> checkInOptional = checkInRepository.findByPassageiro_Cpf(cpf);
+        if(checkInOptional.isEmpty())
+            return null;
+        CheckIn checkIn = checkInOptional.get();
+        return checkIn;
     }
 
     public List<String> consultarAssentos(){
