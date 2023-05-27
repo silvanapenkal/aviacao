@@ -28,7 +28,7 @@ public class CheckInController {
         CheckIn checkIn = mapper.map(checkInRequest, CheckIn.class);
         checkIn = checkInService.criar(checkIn);
         CheckInResponse checkInResponse = mapper.map(checkIn,CheckInResponse.class);
-        return ResponseEntity.created(URI.create(checkInResponse.getEticket())).body(checkInResponse);
+        return ResponseEntity.ok(checkInResponse);
     }
 
 }

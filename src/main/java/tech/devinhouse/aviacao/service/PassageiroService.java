@@ -54,6 +54,7 @@ public class PassageiroService {
                 break;
         }
         passageiro.setMilhas(milhas+milhasAdicionais);
+        repository.save(passageiro);
         return passageiro;
     }
 
