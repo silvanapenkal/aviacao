@@ -14,7 +14,6 @@ import tech.devinhouse.aviacao.exception.RegistroNaoEncontradoException;
 import tech.devinhouse.aviacao.model.CheckIn;
 import tech.devinhouse.aviacao.model.Passageiro;
 import tech.devinhouse.aviacao.repository.CheckInRepository;
-import tech.devinhouse.aviacao.repository.PassageiroRepository;
 
 import java.util.List;
 import java.util.Optional;

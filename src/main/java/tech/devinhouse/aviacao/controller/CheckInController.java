@@ -12,8 +12,6 @@ import tech.devinhouse.aviacao.dto.CheckInResponse;
 import tech.devinhouse.aviacao.model.CheckIn;
 import tech.devinhouse.aviacao.service.CheckInService;
 
-import java.net.URI;
-
 @RestController
 @RequestMapping("api/passageiros/confirmacao")
 @AllArgsConstructor

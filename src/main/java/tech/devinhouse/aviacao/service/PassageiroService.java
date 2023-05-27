@@ -1,7 +1,6 @@
 package tech.devinhouse.aviacao.service;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.devinhouse.aviacao.exception.RegistroNaoEncontradoException;
 import tech.devinhouse.aviacao.model.Passageiro;
