@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+import tech.devinhouse.aviacao.exception.RegistroNaoEncontradoException;
 import tech.devinhouse.aviacao.model.ClassificacaoPassageiro;
 import tech.devinhouse.aviacao.model.Passageiro;
 import tech.devinhouse.aviacao.repository.PassageiroRepository;
@@ -31,7 +32,21 @@ class PassageiroServiceTest {
     private PassageiroService passageiroService;
 
     @Test
+    @DisplayName("Deve retornar true quando passageiro existe")
     void existPassageiroByCpf() {
+        Long cpf = 12345678910L;
+        Mockito.when(passageiroRepository.existsById(Mockito.anyLong())).thenReturn(true);
+        Boolean existe = passageiroService.existPassageiroByCpf(cpf);
+        assertEquals(true, existe);
+    }
+
+    @Test
+    @DisplayName("Deve retornar false quando passageiro não existe")
+    void inexistPassageiroByCpf() {
+        Long cpf = 12345678910L;
+        Mockito.when(passageiroRepository.existsById(Mockito.anyLong())).thenReturn(false);
+        Boolean existe = passageiroService.existPassageiroByCpf(cpf);
+        assertEquals(false, existe);
     }
 
     @Test
@@ -51,7 +66,21 @@ class PassageiroServiceTest {
     }
 
     @Test
+    @DisplayName("Quando há um passageiro cadastrado com o cpf, retorna um passageiro")
     void consultarPorCpf() {
+        Passageiro passageiro = new Passageiro(12345678910L, "Silvana",  LocalDate.of(1977, Month.JANUARY, 14), ClassificacaoPassageiro.VIP,100);
+        Mockito.when(passageiroRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(passageiro));
+        Passageiro resultado = passageiroService.consultarPorCpf(passageiro.getCpf());
+        assertNotNull(resultado);
+        assertEquals(12345678910L,resultado.getCpf());
+        assertEquals("Silvana",resultado.getNome());
+    }
+
+    @Test
+    @DisplayName("Quando não há um passageiro cadastrado com o cpf, retorna um erro")
+    void consultarPorCpfInexistente() {
+        Long cpf = 12345678910L;
+        assertThrows(RegistroNaoEncontradoException.class, () -> passageiroService.consultarPorCpf(cpf));
     }
 
     @Test
@@ -99,6 +128,20 @@ class PassageiroServiceTest {
         assertEquals(110,passageiroVip.getMilhas());
     }
     @Test
+    @DisplayName("Retorna true quando passageiro é maior de idade")
     void verificarMaioridade() {
+        Passageiro passageiro = new Passageiro(12345678910L, "Silvana",  LocalDate.of(1977, Month.JANUARY, 14), ClassificacaoPassageiro.ASSOCIADO,100);
+        Mockito.when(passageiroRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(passageiro));
+        Boolean resultado = passageiroService.verificarMaioridade(passageiro.getCpf());
+        assertEquals(true,resultado);
+    }
+
+    @Test
+    @DisplayName("Retorna false quando passageiro é menor de idade")
+    void verificarMenoridade() {
+        Passageiro passageiro = new Passageiro(12345678910L, "Silvana",  LocalDate.of(2010, Month.JANUARY, 14), ClassificacaoPassageiro.ASSOCIADO,100);
+        Mockito.when(passageiroRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(passageiro));
+        Boolean resultado = passageiroService.verificarMaioridade(passageiro.getCpf());
+        assertEquals(false,resultado);
     }
 }
