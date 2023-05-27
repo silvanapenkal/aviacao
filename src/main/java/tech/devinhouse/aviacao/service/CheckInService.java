@@ -8,7 +8,6 @@ import tech.devinhouse.aviacao.exception.PassageiroMenorDeIdadeException;
 import tech.devinhouse.aviacao.exception.RegistroEncontradoException;
 import tech.devinhouse.aviacao.exception.RegistroNaoEncontradoException;
 import tech.devinhouse.aviacao.model.CheckIn;
-import tech.devinhouse.aviacao.model.Passageiro;
 import tech.devinhouse.aviacao.repository.CheckInRepository;
 
 import java.time.LocalDateTime;
@@ -25,11 +24,6 @@ public class CheckInService {
     private CheckInRepository checkInRepository;
 
     private  PassageiroService passageiroService;
-
-    public List<CheckIn> consultar() {
-        List<CheckIn> checkIns = checkInRepository.findAll();
-        return  checkIns;
-    }
 
     public CheckIn consultarPorCpf(Long cpf) {
         Optional<CheckIn> checkInOptional = checkInRepository.findByPassageiro_Cpf(cpf);

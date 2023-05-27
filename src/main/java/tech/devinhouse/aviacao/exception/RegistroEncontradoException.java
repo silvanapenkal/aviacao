@@ -3,7 +3,7 @@ package tech.devinhouse.aviacao.exception;
 public class RegistroEncontradoException extends RuntimeException{
 
     public RegistroEncontradoException(Long cpf) {
-        super("Checkin realizado para o cpf: "+cpf);
+        super("Checkin para o cpf: " + cpf + " foi realizado anteriormente.");
     }
 
     public RegistroEncontradoException(String assento) {

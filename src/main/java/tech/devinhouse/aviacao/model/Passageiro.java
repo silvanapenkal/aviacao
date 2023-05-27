@@ -2,6 +2,7 @@ package tech.devinhouse.aviacao.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 @Table(name = "PASSAGEIROS")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Passageiro {
 
     @Id
