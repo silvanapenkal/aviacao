@@ -1,6 +1,7 @@
 package tech.devinhouse.aviacao.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.devinhouse.aviacao.exception.RegistroNaoEncontradoException;
 import tech.devinhouse.aviacao.model.Passageiro;
@@ -32,7 +33,7 @@ public class PassageiroService {
         Passageiro passageiro = passageiroOptional.get();
         return passageiro;
     }
-    public Passageiro acrescentarPontos(Long cpf) {
+    public void acrescentarPontos(Long cpf) {
         Passageiro passageiro = consultarPorCpf(cpf);
         Integer milhas = passageiro.getMilhas();
         Integer milhasAdicionais = 0;
@@ -55,7 +56,6 @@ public class PassageiroService {
         }
         passageiro.setMilhas(milhas+milhasAdicionais);
         repository.save(passageiro);
-        return passageiro;
     }
 
     public Boolean verificarMaioridade (Long cpf){
